@@ -1,7 +1,6 @@
 # Html Tools
 
-<!-- Replace this badge with your own-->
-[![Build status](https://ci.appveyor.com/api/projects/status/hv6uyc059rqbc6fj?svg=true)](https://ci.appveyor.com/project/madskristensen/extensibilitytools)
+[![Build status](https://ci.appveyor.com/api/projects/status/fan9tk9gg4784d38?svg=true)](https://ci.appveyor.com/project/madskristensen/htmltools)
 
 <!-- Update the VS Gallery link after you upload the VSIX-->
 Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/[GuidFromGallery])
@@ -15,21 +14,67 @@ See the [change log](CHANGELOG.md) for changes and road map.
 
 ## Features
 
-- Feature 1
-- Feature 2
-  - Sub feature
+- Image hover preview
+- Go to definition of classes and IDs
+- Meta tag Intellisense
+- Dynamic Intellisense
+- Find all references
+- Light bulbs
+- Validation
 
-### Feature 1
-Describe feature 1. Add screenshots/code samples etc.
+### Image hover preview
+![Image hover](art/imagehover.png)
 
-### Feature 2
-Describe feature 2. Add screenshots/code samples etc.
+### Go to definition
+Hit `F12` when the cursor is located inside a class or ID attribute. 
+HTML Tools will jump to the location inside CSS, LESS and SASS files. 
 
-#### Sub feature
-Describe sub feature. Add screenshots/code samples etc.
+### Meta tags
+Full Intellisense provided for: 
+- Apple iOS
+- Twitter Cards
+- Facebook/OpenGraph
+- Windows 8
+- Internet Explorer 9+
+- Viewport
+
+### Dynamic Intellisense
+Dynamic Intellisense is where Intellisense is based on other tags and attributes etc.
+```html
+<label for="here">
+<input id="here" /> based on <label> tags
+<datalist> IDs
+```
+
+![Dynamic Intellisense](art/dynamicintellisense.png)
+
+### Find all references
+Hit `Shift+F12` when the cursor is located inside a class attribute. 
+HTML Tools will search all CSS, LESS and SASS files for the
+class name. 
+
+### Light bulbs
+Light bulbs are added for variuos scenarios including:
+
+- Base64 decoding of images
+- Extract JavaScript to file 
+- Remove parent tags 
+- Extract Stylesheets to file 
+
+### Validation
+
+#### OpenGraph prefix
+When working with Facebook/OpenGraph integration, we need to 
+remember to add the prefix attribute to the `<head>` element. 
+
+#### Microdata
+Validates that the itemtype attribute is a valid absolute URL.
+
+#### rel=logo
+Validates that the `type` attribute has the value `image/svg`
 
 ## Contribute
-Check out the [contribution guidelines](CONTRIBUTING.md)
+Check out the [contribution guidelines](.github/CONTRIBUTING.md)
 if you want to contribute to this project.
 
 For cloning and building this project yourself, make sure
