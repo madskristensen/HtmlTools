@@ -2,8 +2,11 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
     <Identity Id="3cef2919-d8c7-4e9f-a809-5a0ba9c61fac" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
-    <DisplayName>Html Tools</DisplayName>
+    <DisplayName>HTML Tools</DisplayName>
     <Description xml:space="preserve">Productivity tools for the HTML editor</Description>
+    <MoreInfo>https://github.com/madskristensen/HtmlTools</MoreInfo>
+    <License>Resources\LICENSE</License>
+    <ReleaseNotes>https://github.com/madskristensen/HtmlTools/blob/master/CHANGELOG.md</ReleaseNotes>
     <Icon>Resources\Icon.png</Icon>
     <PreviewImage>Resources\Icon.png</PreviewImage>
     <Tags>html, Intellisense</Tags>

@@ -8,7 +8,7 @@ namespace HtmlTools
     static class Vsix
     {
         public const string Id = "3cef2919-d8c7-4e9f-a809-5a0ba9c61fac";
-        public const string Name = "Html Tools";
+        public const string Name = "HTML Tools";
         public const string Description = @"Productivity tools for the HTML editor";
         public const string Language = "en-US";
         public const string Version = "1.0";
