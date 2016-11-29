@@ -140,30 +140,30 @@ namespace HtmlTools
             }
         }
 
-        //public static void AddFileToActiveProject(string fileName, string itemType = null)
-        //{
-        //    Project project = GetActiveProject();
+        public static void AddFileToActiveProject(string fileName, string itemType = null)
+        {
+            Project project = GetActiveProject();
 
-        //    if (project == null)
-        //        return;
-        //    try
-        //    {
-        //        string projectFilePath = project.Properties.Item("FullPath").Value.ToString();
-        //        string projectDirPath = Path.GetDirectoryName(projectFilePath);
+            if (project == null)
+                return;
+            try
+            {
+                string projectFilePath = project.Properties.Item("FullPath").Value.ToString();
+                string projectDirPath = Path.GetDirectoryName(projectFilePath);
 
-        //        if (!fileName.StartsWith(projectDirPath, StringComparison.OrdinalIgnoreCase))
-        //            return;
+                if (!fileName.StartsWith(projectDirPath, StringComparison.OrdinalIgnoreCase))
+                    return;
 
-        //        ProjectItem item = project.ProjectItems.AddFromFile(fileName);
+                ProjectItem item = project.ProjectItems.AddFromFile(fileName);
 
-        //        if (itemType == null || item == null || project.FullName.Contains("://"))
-        //            return;
+                if (itemType == null || item == null || project.FullName.Contains("://"))
+                    return;
 
 
-        //        item.Properties.Item("ItemType").Value = itemType;
-        //    }
-        //    catch { }
-        //}
+                item.Properties.Item("ItemType").Value = itemType;
+            }
+            catch { }
+        }
 
         ///<summary>Gets the currently active project (as reported by the Solution Explorer), if any.</summary>
         public static Project GetActiveProject()
@@ -454,60 +454,60 @@ namespace HtmlTools
             }
         }
 
-        //public static ProjectItem AddFileToProject(string parentFileName, string fileName)
-        //{
-        //    if (Path.GetFullPath(parentFileName) == Path.GetFullPath(fileName) || !File.Exists(fileName))
-        //        return null;
+        public static ProjectItem AddFileToProject(string parentFileName, string fileName)
+        {
+            if (Path.GetFullPath(parentFileName) == Path.GetFullPath(fileName) || !File.Exists(fileName))
+                return null;
 
-        //    fileName = Path.GetFullPath(fileName);  // WAP projects don't like paths with forward slashes
+            fileName = Path.GetFullPath(fileName);  // WAP projects don't like paths with forward slashes
 
-        //    var item = GetProjectItem(parentFileName);
+            var item = GetProjectItem(parentFileName);
 
-        //    if (item == null || item.ContainingProject == null || string.IsNullOrEmpty(item.ContainingProject.FullName))
-        //        return null;
+            if (item == null || item.ContainingProject == null || string.IsNullOrEmpty(item.ContainingProject.FullName))
+                return null;
 
-        //    var dependentItem = GetProjectItem(fileName);
+            var dependentItem = GetProjectItem(fileName);
 
-        //    if (dependentItem != null && item.ContainingProject.GetType().Name == "OAProject" && item.ProjectItems != null)
-        //    {
-        //        // WinJS
-        //        ProjectItem addedItem = null;
+            if (dependentItem != null && item.ContainingProject.GetType().Name == "OAProject" && item.ProjectItems != null)
+            {
+                // WinJS
+                ProjectItem addedItem = null;
 
-        //        try
-        //        {
-        //            addedItem = dependentItem.ProjectItems.AddFromFile(fileName);
+                try
+                {
+                    addedItem = dependentItem.ProjectItems.AddFromFile(fileName);
 
-        //            // create nesting
-        //            if (Path.GetDirectoryName(parentFileName) == Path.GetDirectoryName(fileName))
-        //                addedItem.Properties.Item("DependentUpon").Value = Path.GetFileName(parentFileName);
-        //        }
-        //        catch (COMException) { }
-        //        catch { return dependentItem; }
+                    // create nesting
+                    if (Path.GetDirectoryName(parentFileName) == Path.GetDirectoryName(fileName))
+                        addedItem.Properties.Item("DependentUpon").Value = Path.GetFileName(parentFileName);
+                }
+                catch (COMException) { }
+                catch { return dependentItem; }
 
-        //        return addedItem;
-        //    }
+                return addedItem;
+            }
 
-        //    if (dependentItem != null) // File already exists in the project
-        //        return null;
-        //    else if (item.ContainingProject.GetType().Name != "OAProject" && item.ProjectItems != null && Path.GetDirectoryName(parentFileName) == Path.GetDirectoryName(fileName))
-        //    {   // WAP
-        //        try
-        //        {
-        //            return item.ProjectItems.AddFromFile(fileName);
-        //        }
-        //        catch (COMException) { }
-        //    }
-        //    else if (Path.GetFullPath(fileName).StartsWith(GetRootFolder(item.ContainingProject), StringComparison.OrdinalIgnoreCase))
-        //    {   // Website
-        //        try
-        //        {
-        //            return item.ContainingProject.ProjectItems.AddFromFile(fileName);
-        //        }
-        //        catch (COMException) { }
-        //    }
+            if (dependentItem != null) // File already exists in the project
+                return null;
+            else if (item.ContainingProject.GetType().Name != "OAProject" && item.ProjectItems != null && Path.GetDirectoryName(parentFileName) == Path.GetDirectoryName(fileName))
+            {   // WAP
+                try
+                {
+                    return item.ProjectItems.AddFromFile(fileName);
+                }
+                catch (COMException) { }
+            }
+            else if (Path.GetFullPath(fileName).StartsWith(GetRootFolder(item.ContainingProject), StringComparison.OrdinalIgnoreCase))
+            {   // Website
+                try
+                {
+                    return item.ContainingProject.ProjectItems.AddFromFile(fileName);
+                }
+                catch (COMException) { }
+            }
 
-        //    return null;
-        //}
+            return null;
+        }
 
         //public static bool CreateDirectoryInProject(string path)
         //{

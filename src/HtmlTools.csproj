@@ -52,7 +52,6 @@
     <Compile Include="Commands\FindAllReferencesCommandTarget.cs" />
     <Compile Include="Commands\GoToDefinitionCommandTarget.cs" />
     <Compile Include="Commands\HtmlCreationListener.cs" />
-    <Compile Include="Completion\AngularClassCompletion.cs" />
     <Compile Include="Completion\AppleLinkCompletion.cs" />
     <Compile Include="Completion\AppleMetaCompletion.cs" />
     <Compile Include="Completion\AriaIdCompletion.cs" />
@@ -71,12 +70,22 @@
     <Compile Include="Completion\ViewportCompletion.cs" />
     <Compile Include="ExtensionMethods\HtmlExtensions.cs" />
     <Compile Include="Helpers\CssItemCollector.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\FileHelpers.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\ProjectHelpers.cs" />
     <Compile Include="Helpers\TabAwareCharacterStream.cs" />
     <Compile Include="HtmlToolsPackage.cs" />
+    <Compile Include="LightBulbs\Actions\Base64DecodeLightBulbAction.cs" />
+    <Compile Include="LightBulbs\Actions\ExtractLightBulbAction.cs" />
+    <Compile Include="LightBulbs\Actions\HtmlSuggestedActionBase.cs" />
+    <Compile Include="LightBulbs\Actions\IntegrityLightBulbAction.cs" />
+    <Compile Include="LightBulbs\Actions\RemoveElementLightBulbAction.cs" />
+    <Compile Include="LightBulbs\Actions\SuggestedActionBase.cs" />
+    <Compile Include="LightBulbs\Providers\ImageLightBulbProvider.cs" />
+    <Compile Include="LightBulbs\Providers\IntegrityLightBulbProvider.cs" />
+    <Compile Include="LightBulbs\Providers\RemoveElementLightBulbProvider.cs" />
+    <Compile Include="LightBulbs\Providers\StyleScriptLightBulbProvider.cs" />
     <Compile Include="Outlining\KoTagger.cs" />
     <Compile Include="Outlining\Regions.cs" />
     <Compile Include="Peek\ClassNames\ClassPeekDefinitionItem.cs" />
@@ -282,7 +291,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="Resources\Icons\angular.png" />
     <Resource Include="Resources\nopreview.png" />
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>

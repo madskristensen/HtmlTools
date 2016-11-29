@@ -120,21 +120,35 @@ namespace HtmlTools
             // images will never change. If that changes,
             // you must change that to handle changes.
             var size = WebEditor.ExportProvider.GetExport<ITextBufferFactoryService>().Value.CreateTextBuffer();
-            size.SetText("Loading...");
+            SetText(size, "Loading...");
 
-            source.OnDownloaded(() => size.SetText(source.PixelWidth + "×" + source.PixelHeight));
+            OnDownloaded(source, () => SetText(size, source.PixelWidth + "×" + source.PixelHeight));
             if (source.IsDownloading)
             {
                 EventHandler<System.Windows.Media.ExceptionEventArgs> failure = (s, e) =>
                 {
                     image.Source = noPreview;
-                    size.SetText("Couldn't load image: " + e.ErrorException.Message);
+                    SetText(size, "Couldn't load image: " + e.ErrorException.Message);
                 };
                 source.DecodeFailed += failure;
                 source.DownloadFailed += failure;
             }
 
             qiContent.Add(size);
+        }
+
+        private static void OnDownloaded(BitmapSource image, Action callback)
+        {
+            if (image.IsDownloading)
+                image.DownloadCompleted += (s, e) => callback();
+            else
+                callback();
+        }
+
+        ///<summary>Replaces a TextBuffer's entire content with the specified text.</summary>
+        private static void SetText(ITextBuffer buffer, string text)
+        {
+            buffer.Replace(new Span(0, buffer.CurrentSnapshot.Length), text);
         }
 
         private static BitmapFrame LoadImage(string url)

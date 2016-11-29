@@ -14,6 +14,7 @@
 - [x] Peek definition for classes and IDs
 - [x] Go to definition on classes and IDs
 - [x] Find all references for classes and IDs
+- [x] Light bulbs
 
 Features that have a checkmark are complete and available for
 download in the
