@@ -9,6 +9,7 @@
   - [x] Apple Link and Meta elements
   - [x] Label[for]
 - [x] Knockout.js KO comment outlining
+- [x] Validation
 
 Features that have a checkmark are complete and available for
 download in the
@@ -19,10 +20,6 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
-
 ## 1.0
 
 - [x] Initial release
-- [x] Feature 1
-- [x] Feature 2
-  - [x] Sub feature
