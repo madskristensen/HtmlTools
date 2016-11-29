@@ -12,11 +12,20 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Editor.Host;
 
 namespace HtmlTools
 {
     internal static class ProjectHelpers
     {
+        public static IContentType GetContentType(string name)
+        {
+            var ctr = WebEditor.ExportProvider.GetExport<IContentTypeRegistryService>().Value;
+
+            return ctr.GetContentType(name);
+        }
+
         //public const string SolutionItemsFolder = "Solution Items";
         public static DTE2 DTE { get; } = Package.GetGlobalService(typeof(DTE)) as DTE2;
 

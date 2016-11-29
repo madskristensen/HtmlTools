@@ -66,13 +66,23 @@
     <Compile Include="Completion\TwitterCardCompletion.cs" />
     <Compile Include="Completion\ViewportCompletion.cs" />
     <Compile Include="ExtensionMethods\HtmlExtensions.cs" />
+    <Compile Include="Helpers\CssItemCollector.cs" />
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\ProjectHelpers.cs" />
     <Compile Include="Helpers\TabAwareCharacterStream.cs" />
     <Compile Include="HtmlToolsPackage.cs" />
     <Compile Include="Outlining\KoTagger.cs" />
     <Compile Include="Outlining\Regions.cs" />
+    <Compile Include="Peek\ClassNames\ClassPeekDefinitionItem.cs" />
+    <Compile Include="Peek\ClassNames\ClassPeekItemProvider.cs" />
+    <Compile Include="Peek\ClassNames\ClassPeekItemSource.cs" />
+    <Compile Include="Peek\ClassNames\ClassPeekResultSource.cs" />
+    <Compile Include="Peek\IDs\IdPeekDefinitionItem.cs" />
+    <Compile Include="Peek\IDs\IdPeekItemProvider.cs" />
+    <Compile Include="Peek\IDs\IdPeekItemSource.cs" />
+    <Compile Include="Peek\IDs\IdPeekResultSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickInfo\ImageHtml\ImageQuickInfo.cs" />
     <Compile Include="QuickInfo\ImageHtml\ImageQuickInfoController.cs" />
@@ -107,13 +117,21 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSS.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.CSS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSS.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.CSS.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Html.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Core.dll</HintPath>
+      <HintPath>..\lib\Microsoft.Html.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Html.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Editor.dll</HintPath>
+      <HintPath>..\lib\Microsoft.Html.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.CommandBars, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -234,11 +252,11 @@
     </Reference>
     <Reference Include="Microsoft.Web.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Core.dll</HintPath>
+      <HintPath>..\lib\Microsoft.Web.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Editor.dll</HintPath>
+      <HintPath>..\lib\Microsoft.Web.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
