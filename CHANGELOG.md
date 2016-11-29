@@ -1,7 +1,14 @@
 # Road map
 
-- [x] A feature that has been completed
-- [ ] A feature that has NOT yet been completed
+- [x] Intellisense for
+  - [x] Aria values
+  - [x] Twitter Cards
+  - [x] Open Graph
+  - [x] Viewport
+  - [x] HTML5 datalist
+  - [x] Apple Link and Meta elements
+  - [x] Label[for]
+- [x] Knockout.js KO comment outlining
 
 Features that have a checkmark are complete and available for
 download in the
@@ -12,10 +19,6 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
-## 1.1
-
-- [x] Feature 3
-- [x] Feature 4
 
 ## 1.0
 

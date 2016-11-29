@@ -1,10 +1,8 @@
-﻿using Microsoft.Html.Core;
-using Microsoft.Html.Core.Tree.Nodes;
+﻿using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.Html.Editor.Completion;
 using Microsoft.Html.Editor.Completion.Def;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Core.ContentTypes;
-using Microsoft.Web.Editor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +14,7 @@ namespace HtmlTools
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AngularClassCompletion : IHtmlCompletionListProvider, IHtmlTreeVisitor
     {
-        private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/angular.png", UriKind.RelativeOrAbsolute));
+        private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/HtmlTools;component/Resources/Icons/angular.png", UriKind.RelativeOrAbsolute));
         private static List<string> _classes = new List<string>()
         {
             "ng-bind",
@@ -36,7 +34,7 @@ namespace HtmlTools
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
-        { 
+        {
             HashSet<bool> isAngular = new HashSet<bool>();
             context.Document.HtmlEditorTree.RootNode.Accept(this, isAngular);
 

@@ -15,7 +15,7 @@ namespace HtmlTools
     [ContentType("htmlx")]
     public class AureliaCompletion : IHtmlCompletionListProvider, IHtmlCompletionListFilter
     {
-        private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/aurelia.png", UriKind.RelativeOrAbsolute));
+        private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/HtmlTools;component/Resources/Icons/aurelia.png", UriKind.RelativeOrAbsolute));
 
         public string CompletionType
         {
