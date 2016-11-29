@@ -16,6 +16,7 @@ See the [change log](CHANGELOG.md) for changes and road map.
 
 - Image hover preview
 - Go to definition of classes and IDs
+- Peek definition
 - Meta tag Intellisense
 - Dynamic Intellisense
 - Find all references
@@ -27,7 +28,12 @@ See the [change log](CHANGELOG.md) for changes and road map.
 
 ### Go to definition
 Hit `F12` when the cursor is located inside a class or ID attribute. 
-HTML Tools will jump to the location inside CSS, LESS and SASS files. 
+HTML Tools will jump to the location inside CSS, LESS and Sass files. 
+
+### Peek definition
+Hit `Alt+F12` when the curser is located inside a class or ID attribute.
+A peek definition inline code window will appear showing the definition
+of the class/ID from CSS, LESS and Sass files.
 
 ### Meta tags
 Full Intellisense provided for: 
