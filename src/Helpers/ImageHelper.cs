@@ -18,18 +18,18 @@ namespace HtmlTools
 
         public static BitmapSource GetImage(ImageMoniker moniker)
         {
-            ImageAttributes imageAttributes = new ImageAttributes();
-            imageAttributes.Flags = (uint)_ImageAttributesFlags.IAF_RequiredFlags;
-            imageAttributes.ImageType = (uint)_UIImageType.IT_Bitmap;
-            imageAttributes.Format = (uint)_UIDataFormat.DF_WPF;
-            imageAttributes.LogicalHeight = 16;
-            imageAttributes.LogicalWidth = 16;
-            imageAttributes.StructSize = Marshal.SizeOf(typeof(ImageAttributes));
+            ImageAttributes imageAttributes = new ImageAttributes()
+            {
+                Flags = (uint)_ImageAttributesFlags.IAF_RequiredFlags,
+                ImageType = (uint)_UIImageType.IT_Bitmap,
+                Format = (uint)_UIDataFormat.DF_WPF,
+                LogicalHeight = 16,
+                LogicalWidth = 16,
+                StructSize = Marshal.SizeOf(typeof(ImageAttributes))
+            };
 
             IVsUIObject result = _imageService.GetImage(moniker, imageAttributes);
-
-            Object data;
-            result.get_Data(out data);
+            result.get_Data(out var data);
 
             if (data == null)
                 return null;

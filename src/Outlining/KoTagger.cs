@@ -105,8 +105,7 @@ namespace HtmlTools
                 if ((regionStart = text.IndexOf(startHide, StringComparison.Ordinal)) != -1 || (regionStart = text.IndexOf(startHide.Replace(" ", string.Empty), StringComparison.Ordinal)) != -1)
                 {
                     int currentLevel = (currentRegion != null) ? currentRegion.Level : 1;
-                    int newLevel;
-                    if (!TryGetLevel(text, regionStart, out newLevel))
+                    if (!TryGetLevel(text, regionStart, out int newLevel))
                         newLevel = currentLevel + 1;
 
                     //levels are the same and we have an existing region;
@@ -145,8 +144,8 @@ namespace HtmlTools
                 else if ((regionStart = text.IndexOf(endHide, StringComparison.Ordinal)) != -1 || (regionStart = text.IndexOf(endHide.Replace(" ", string.Empty), StringComparison.Ordinal)) != -1)
                 {
                     int currentLevel = (currentRegion != null) ? currentRegion.Level : 1;
-                    int closingLevel;
-                    if (!TryGetLevel(text, regionStart, out closingLevel))
+
+                    if (!TryGetLevel(text, regionStart, out int closingLevel))
                         closingLevel = currentLevel;
 
                     //the regions match
@@ -201,9 +200,7 @@ namespace HtmlTools
 
             if (changeStart <= changeEnd)
             {
-                if (this.TagsChanged != null)
-                    this.TagsChanged(this, new SnapshotSpanEventArgs(
-                        new SnapshotSpan(this.snapshot, Span.FromBounds(changeStart, changeEnd))));
+                TagsChanged?.Invoke(this, new SnapshotSpanEventArgs(new SnapshotSpan(this.snapshot, Span.FromBounds(changeStart, changeEnd))));
             }
         }
 

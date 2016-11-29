@@ -10,6 +10,7 @@
   - [x] Label[for]
 - [x] Knockout.js KO comment outlining
 - [x] Validation
+- [x] Image hover preview
 
 Features that have a checkmark are complete and available for
 download in the
