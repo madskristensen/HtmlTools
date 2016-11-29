@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor.Host;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace HtmlTools
 {
@@ -193,20 +194,20 @@ namespace HtmlTools
         }
 
         ///<summary>Converts a relative URL to an absolute path on disk, as resolved from the active file.</summary>
-        //public static string ToAbsoluteFilePathFromActiveFile(string relativeUrl)
-        //{
-        //    return ToAbsoluteFilePath(relativeUrl, GetActiveFile());
-        //}
+        public static string ToAbsoluteFilePathFromActiveFile(string relativeUrl)
+        {
+            return ToAbsoluteFilePath(relativeUrl, GetActiveFile());
+        }
 
         ///<summary>Converts a relative URL to an absolute path on disk, as resolved from the specified file.</summary>
-        //private static string ToAbsoluteFilePath(string relativeUrl, ProjectItem file)
-        //{
-        //    if (file == null)
-        //        return null;
+        private static string ToAbsoluteFilePath(string relativeUrl, ProjectItem file)
+        {
+            if (file == null)
+                return null;
 
-        //    var baseFolder = file.Properties == null ? null : ProjectHelpers.GetProjectFolder(file);
-        //    return ToAbsoluteFilePath(relativeUrl, GetProjectFolder(file), baseFolder);
-        //}
+            var baseFolder = file.Properties == null ? null : ProjectHelpers.GetProjectFolder(file);
+            return ToAbsoluteFilePath(relativeUrl, GetProjectFolder(file), baseFolder);
+        }
 
         ///<summary>Converts a relative URL to an absolute path on disk, as resolved from the specified relative or base directory.</summary>
         ///<param name="relativeUrl">The URL to resolve.</param>
@@ -264,28 +265,28 @@ namespace HtmlTools
         //}
 
         ///<summary>Gets the TextView for the active document.</summary>
-        //public static IWpfTextView GetCurentTextView()
-        //{
-        //    var componentModel = GetComponentModel();
-        //    if (componentModel == null) return null;
-        //    var editorAdapter = componentModel.GetService<IVsEditorAdaptersFactoryService>();
+        public static IWpfTextView GetCurentTextView()
+        {
+            var componentModel = GetComponentModel();
+            if (componentModel == null) return null;
+            var editorAdapter = componentModel.GetService<IVsEditorAdaptersFactoryService>();
 
-        //    return editorAdapter.GetWpfTextView(GetCurrentNativeTextView());
-        //}
+            return editorAdapter.GetWpfTextView(GetCurrentNativeTextView());
+        }
 
-        //public static IVsTextView GetCurrentNativeTextView()
-        //{
-        //    var textManager = (IVsTextManager)ServiceProvider.GlobalProvider.GetService(typeof(SVsTextManager));
+        public static IVsTextView GetCurrentNativeTextView()
+        {
+            var textManager = (IVsTextManager)ServiceProvider.GlobalProvider.GetService(typeof(SVsTextManager));
 
-        //    IVsTextView activeView = null;
-        //    ErrorHandler.ThrowOnFailure(textManager.GetActiveView(1, null, out activeView));
-        //    return activeView;
-        //}
+            IVsTextView activeView = null;
+            ErrorHandler.ThrowOnFailure(textManager.GetActiveView(1, null, out activeView));
+            return activeView;
+        }
 
-        //public static IComponentModel GetComponentModel()
-        //{
-        //    return (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
-        //}
+        public static IComponentModel GetComponentModel()
+        {
+            return (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
+        }
 
         ///<summary>Gets the paths to all files included in the selection, including files within selected folders.</summary>
         //public static IEnumerable<string> GetSelectedFilePaths()
@@ -426,18 +427,18 @@ namespace HtmlTools
         //    return projectItem.ContainingProject;
         //}
 
-        //public static ProjectItem GetActiveFile()
-        //{
-        //    var doc = DTE.ActiveDocument;
+        public static ProjectItem GetActiveFile()
+        {
+            var doc = DTE.ActiveDocument;
 
-        //    if (doc == null)
-        //        return null;
+            if (doc == null)
+                return null;
 
-        //    if (GetProjectFolder(doc.ProjectItem) != null)
-        //        return doc.ProjectItem;
+            if (GetProjectFolder(doc.ProjectItem) != null)
+                return doc.ProjectItem;
 
-        //    return null;
-        //}
+            return null;
+        }
 
         internal static ProjectItem GetProjectItem(string fileName)
         {
@@ -557,5 +558,25 @@ namespace HtmlTools
         //                     ToAbsoluteFilePath(file, root, Path.GetDirectoryName(bundleFileName));
         //    }
         //}
+
+        public static void OpenFileInPreviewTab(string file)
+        {
+            IVsNewDocumentStateContext newDocumentStateContext = null;
+
+            try
+            {
+                IVsUIShellOpenDocument3 openDoc3 = Package.GetGlobalService(typeof(SVsUIShellOpenDocument)) as IVsUIShellOpenDocument3;
+
+                Guid reason = VSConstants.NewDocumentStateReason.Navigation;
+                newDocumentStateContext = openDoc3.SetNewDocumentState((uint)__VSNEWDOCUMENTSTATE.NDS_Provisional, ref reason);
+
+                DTE.ItemOperations.OpenFile(file);
+            }
+            finally
+            {
+                if (newDocumentStateContext != null)
+                    newDocumentStateContext.Restore();
+            }
+        }
     }
 }

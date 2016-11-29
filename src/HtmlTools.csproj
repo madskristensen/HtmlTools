@@ -48,6 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\CommandTargetBase.cs" />
+    <Compile Include="Commands\FindAllReferencesCommandTarget.cs" />
+    <Compile Include="Commands\GoToDefinitionCommandTarget.cs" />
+    <Compile Include="Commands\HtmlCreationListener.cs" />
     <Compile Include="Completion\AngularClassCompletion.cs" />
     <Compile Include="Completion\AppleLinkCompletion.cs" />
     <Compile Include="Completion\AppleMetaCompletion.cs" />
