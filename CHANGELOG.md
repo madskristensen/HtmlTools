@@ -25,6 +25,8 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
+增加了对abp-src、abp-href的支持
+
 ## 1.0
 
 - [x] Initial release
