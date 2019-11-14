@@ -42,10 +42,16 @@ namespace HtmlTools
             {
                 _path = _path.TrimStart('~').Trim();
                 string absolute = ProjectHelpers.ToAbsoluteFilePathFromActiveFile(_path);
+                string dotnetcoreabsolute = ProjectHelpers.ToAbsoluteFilePathFromActiveFile("/wwwroot" + _path);
 
                 if (File.Exists(absolute))
                 {
                     ProjectHelpers.OpenFileInPreviewTab(absolute);
+                    return true;
+                }
+                else if (File.Exists(dotnetcoreabsolute))
+                {
+                    ProjectHelpers.OpenFileInPreviewTab(dotnetcoreabsolute);
                     return true;
                 }
 
@@ -158,7 +164,7 @@ namespace HtmlTools
             if (element == null)
                 return false;
 
-            attr = element.GetAttribute("src") ?? element.GetAttribute("href");
+            attr = element.GetAttribute("src") ?? element.GetAttribute("href") ?? element.GetAttribute("abp-src") ?? element.GetAttribute("abp-href");
 
             if (attr != null)
             {

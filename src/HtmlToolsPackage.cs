@@ -9,7 +9,7 @@ namespace HtmlTools
     [Guid(PackageGuidString)]
     public sealed class HtmlToolsPackage : Package
     {
-        public const string PackageGuidString = "d87af1f6-eee2-4a46-885a-372d215b98a3";
+        public const string PackageGuidString = "3e13f8c1-7dbc-4422-a281-055d45e2909e";
 
         protected override void Initialize()
         {

@@ -20,7 +20,7 @@ namespace HtmlTools
 
         public override void Invoke(CancellationToken cancellationToken)
         {
-            AttributeNode src = Element.GetAttribute("src") ?? Element.GetAttribute("href");
+            AttributeNode src = Element.GetAttribute("src") ?? Element.GetAttribute("href") ?? Element.GetAttribute("abp-src") ?? Element.GetAttribute("abp-href");
             AttributeNode integrity = Element.GetAttribute("integrity");
             AttributeNode crossorigin = Element.GetAttribute("crossorigin");
 
